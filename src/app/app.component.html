@@ -1,0 +1,21 @@
+<div class="app-container">
+  <header class="mat-elevation-z6">
+    <mat-toolbar color="primary">
+      <mat-icon>domain</mat-icon>
+      <span style="margin-left: 15px;">ABC Bank</span>
+      <span style="flex: 1 1 auto;"></span>
+    </mat-toolbar>
+  </header>
+  <main>
+    <section class="app-navigation-wrapper">
+      <top-nav [tabs]="[]"></top-nav>
+    </section>
+    <section class="content-area">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+  <footer class="mat-elevation-z6">
+    <span style="flex: 1 1 auto;"></span>
+    <span>Angular application demonostrating implementation of stateful MDI with NGRX.</span>
+  </footer>
+</div>

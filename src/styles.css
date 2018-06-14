@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons');
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body{
+    height: 100%;
+    margin: 0!important;
+}
+
+.app-navigation-wrapper .mat-tab-links{
+    overflow-x: auto;
+}
+
+home{
+    height: 100%;
+}
+
+.mat-tab-link{
+    min-width: 100px !important;
+}
+
+top-nav .mat-ink-bar{
+    height: 3px !important;
+}
+
+top-nav .mat-tab-label-active{
+    background-color: lightblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.mat-list-item-active{
+    border-right: 5px solid blue;
+    background-color: lightgrey;
+}
