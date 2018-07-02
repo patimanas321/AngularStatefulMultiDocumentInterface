@@ -27,3 +27,11 @@ footer{
 .app-navigation-wrapper{
     height: 50px;
 }
+
+.side-nav{
+    width: 250px;
+}
+
+.side-nav-icon{
+    margin-right: 10px;
+}

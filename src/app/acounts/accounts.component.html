@@ -1,1 +1,81 @@
-accounts list
+<mat-toolbar class="mat-elevation-z2 app-page-header">
+    <mat-icon>recent_actors</mat-icon>
+    <span style="margin-left: 10px;">Accounts</span>
+    <span style="flex: 1 1 auto;"></span>
+    <button type="button" mat-icon-button>
+        <mat-icon>replay</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="addAccount()">
+            Add Account
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<section class="content">
+    <div class="search-box">
+        <mat-form-field style="width: 200px;">
+            <input type="text" placeholder="Search Student.." matInput [(ngModel)]="data.searchedText" (keyup)="updateFilter($event)">
+            <button mat-button *ngIf="searchedText" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button style="display:inline-block" type="button" mat-icon-button aid="searchBtn">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+    <ngx-datatable class="datagrid" [rows]="data.accountsList" [headerHeight]="'auto'" [footerHeight]="'auto'" [rowHeight]="'auto'" [limit]="5">
+
+        <ngx-datatable-column headerClass="col-id" cellClass="col-id" name="ID">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <span class="label-mobile">ID</span>
+                <span class="value-mobile">{{value}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="AccountNumber" prop="number">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="label-mobile">Account Number</span>
+                <span class="value-mobile">
+                    <a href="javascript:void(0);" (click)="openAccount(row)">{{value}}</a>
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column headerClass="flex-2" cellClass="flex-2" name="Account Holder Name">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="label-mobile">Account Holder Name</span>
+                <span class="value-mobile">{{value}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Balance">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <span class="label-mobile">Balance</span>
+                <span class="label">{{value | currency}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Status">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <span class="label-mobile">Status</span>
+                <span class="label">{{value}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1">
+            <ng-template ngx-datatable-header-template>
+                Actions
+            </ng-template>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="label-mobile">Actions</span>
+                <button mat-icon-button (click)="openAccount(row);">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</section>

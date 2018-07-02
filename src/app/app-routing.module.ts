@@ -10,15 +10,13 @@ import { ApplicationComponent } from "./application/application.component";
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      {
-        path: 'home',
-        component: HomeComponent,
-        children: [
-          { path: 'accounts', component: AccountsComponent },
-          { path: 'applications', component: ApplicationsComponent },
-          { path: '', redirectTo: 'accounts', pathMatch: 'full' },
-          { path: '**', redirectTo: 'accounts', pathMatch: 'full' }
-        ]
+      { 
+        path: 'accounts', 
+        component: AccountsComponent 
+      },
+      { 
+        path: 'applications', 
+        component: ApplicationsComponent 
       },
       { 
         path: 'mdi/:id', 
@@ -30,8 +28,8 @@ import { ApplicationComponent } from "./application/application.component";
           { path: '**', redirectTo: 'accounts', pathMatch: 'full' }
         ]
       },
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: '**', redirectTo: '/home', pathMatch: 'full' }
+      { path: '', redirectTo: '/accounts', pathMatch: 'full' },
+      { path: '**', redirectTo: '/accounts', pathMatch: 'full' }
     ])
   ],
   declarations: [],

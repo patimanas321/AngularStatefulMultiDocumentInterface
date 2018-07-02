@@ -23,12 +23,11 @@ export class TopNavComponent implements OnInit {
   }
   set tabs(tabs: Tab[]) {
     this._tabs = tabs;
-    var homeTab = new Tab(1, 'Home', '/home', false);
-    if(this._tabs && this._tabs.length == 0) 
-      homeTab.isActive = true;
-    this._tabs.unshift(homeTab);
-
-    var mdi = new Tab(100, 'Tab 1', '/mdi/100', false);
+    var mdi = new Tab(100, 'Tab 1', '', '/mdi/100', false);
     this._tabs.push(mdi);
+  }
+
+  public changeTab(tab:Tab){
+    tab.isActive = true;
   }
 }

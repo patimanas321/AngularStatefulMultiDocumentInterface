@@ -11,6 +11,8 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './acount/account.component';
 import { ApplicationComponent } from './application/application.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { StoreModule } from '@ngrx/store';
 
 import {
   MatAutocompleteModule,
@@ -49,6 +51,8 @@ import {
   MatTooltipModule,
   MatTreeModule
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { rootReducer } from './store/reducers/root.reducer';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,13 @@ import {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
+
+    NgxDatatableModule,
+
+    StoreModule.forRoot(rootReducer),
 
     MatAutocompleteModule,
     MatBadgeModule,

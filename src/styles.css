@@ -5,6 +5,7 @@
 html, body{
     height: 100%;
     margin: 0!important;
+    font-family: "Helvetica Neue",sans-serif;
 }
 
 .app-navigation-wrapper .mat-tab-links{
@@ -29,7 +30,21 @@ top-nav .mat-tab-label-active{
     border-top-right-radius: 5px;
 }
 
+.mat-list-item{
+    border-left: 5px solid transparent;
+}
 .mat-list-item-active{
-    border-right: 5px solid blue;
+    border-left: 5px solid blue;
     background-color: lightgrey;
+}
+.app-page-header{
+    background: #FFFFFF !important;
+    box-shadow: rgb(0,0,0,12%) 0 0 4px !important;
+    min-height: 55px !important;
+    display: flex;
+}
+.search-box{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
