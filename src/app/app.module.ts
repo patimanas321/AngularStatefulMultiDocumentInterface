@@ -4,11 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AccountsComponent } from "./acounts/accounts.component";
-import { ApplicationsComponent } from "./applications/applications.component";
+import { AccountListComponent } from "./account-list/account-list.component";
+import { ApplicationListComponent } from "./application-list/application-list.component";
 import { MdiComponent } from "./mdi/mdi.component";
 import { TopNavComponent } from './top-nav/top-nav.component';
-import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './acount/account.component';
 import { ApplicationComponent } from './application/application.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -57,11 +56,10 @@ import { rootReducer } from './store/reducers/root.reducer';
 @NgModule({
   declarations: [
     AppComponent,
-    AccountsComponent,
-    ApplicationsComponent,
+    AccountListComponent,
+    ApplicationListComponent,
     MdiComponent,
     TopNavComponent,
-    HomeComponent,
     AccountComponent,
     ApplicationComponent
   ],

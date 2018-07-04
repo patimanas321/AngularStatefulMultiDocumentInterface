@@ -2,6 +2,6 @@ import { Application } from "./application";
 
 export class ApplicationListViewModel {
     public searchedText: string;
-    public accountsList: Application[] = [];
+    public applicationList: Application[] = [];
     public selectedPage: number;
 }

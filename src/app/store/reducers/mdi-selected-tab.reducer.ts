@@ -1,7 +1,7 @@
 import * as mdiActions from '../actions/mdi.action';
-import { Mdi } from '../../models/mdi';
+import { MdiDocument } from '../../models/mdi';
 
-let INITIAL_STATE: number = 0;
+let INITIAL_STATE: MdiDocument = null;
 
 //Reducer is a pure function, Cannot change state, must create a whole new object.
 export function MdiSelectedTabReducer(state = INITIAL_STATE, action: mdiActions.Action) {

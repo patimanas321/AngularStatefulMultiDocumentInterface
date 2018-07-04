@@ -1,6 +1,6 @@
 export class Tab{
     constructor(
-        public id: number,
+        public id: string,
         public label: string,
         public icon: string,
         public path: string,

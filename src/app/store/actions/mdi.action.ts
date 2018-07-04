@@ -26,9 +26,9 @@ export class UpdateMdiAction{
     }
 }
 
-export class UpdateSleectedMdiAction{
+export class UpdateSlectedMdiAction{
     readonly type = UPDATE_SELECTED_MDI;
-    constructor(public payload: number){
+    constructor(public payload: string){
         
     }
 }
@@ -38,4 +38,4 @@ export type Action
     = AddMdiAction|
     DeleteMdiAction|
     UpdateMdiAction|
-    UpdateSleectedMdiAction
+    UpdateSlectedMdiAction

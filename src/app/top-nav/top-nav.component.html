@@ -1,6 +1,6 @@
 <nav mat-tab-nav-bar>
     <a mat-tab-link 
-        *ngFor="let tab of tabs" 
+        *ngFor="let tab of Tabs" 
         (click)="changeTab(tab)" 
         [active]="tab.isActive">
         {{tab.label}}

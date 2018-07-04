@@ -6,14 +6,14 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../models/app-state';
 import * as accountListAction from '../store/actions/account-list.action';
 import * as mdiAction from '../store/actions/mdi.action';
-import { MdiDocument } from '../models/mdi';
+import { MdiDocument, MdiType } from '../models/mdi';
 
 @Component({
-  selector: 'accounts',
-  templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.css']
+  selector: 'account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.css']
 })
-export class AccountsComponent implements OnInit, OnDestroy {
+export class AccountListComponent implements OnInit, OnDestroy {
   
   constructor(
     private accountService: AccountsService,
@@ -45,12 +45,12 @@ export class AccountsComponent implements OnInit, OnDestroy {
   }
 
   openAccount(account: BankAccount){
-    let newDoc = new MdiDocument(new Date().valueOf(), account.number.toString(), '', null);
+    let newDoc = new MdiDocument(account.number, account.number, '', MdiType.Account, true, null);
     this.store.dispatch(new mdiAction.AddMdiAction(newDoc));
   }  
 
   addAccount(){
-
+    
   }
 
   fillPageData(){

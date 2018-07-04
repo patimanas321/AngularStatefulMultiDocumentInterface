@@ -1,9 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
-import { AccountsComponent } from "./acounts/accounts.component";
-import { ApplicationsComponent } from "./applications/applications.component";
+import { AccountListComponent } from "./account-list/account-list.component";
+import { ApplicationListComponent } from "./application-list/application-list.component";
 import { MdiComponent } from "./mdi/mdi.component";
-import { HomeComponent } from "./home/home.component";
 import { AccountComponent } from "./acount/account.component";
 import { ApplicationComponent } from "./application/application.component";
 
@@ -12,21 +11,19 @@ import { ApplicationComponent } from "./application/application.component";
     RouterModule.forRoot([
       { 
         path: 'accounts', 
-        component: AccountsComponent 
+        component: AccountListComponent 
       },
       { 
         path: 'applications', 
-        component: ApplicationsComponent 
+        component: ApplicationListComponent 
       },
       { 
-        path: 'mdi/:id', 
-        component: MdiComponent,
-        children: [
-          { path: 'account', component: AccountComponent },
-          { path: 'application', component: ApplicationComponent },
-          { path: '', redirectTo: 'accounts', pathMatch: 'full' },
-          { path: '**', redirectTo: 'accounts', pathMatch: 'full' }
-        ]
+        path: 'account/:id', 
+        component: AccountComponent
+      },
+      { 
+        path: 'application/:id', 
+        component: ApplicationComponent
       },
       { path: '', redirectTo: '/accounts', pathMatch: 'full' },
       { path: '**', redirectTo: '/accounts', pathMatch: 'full' }
