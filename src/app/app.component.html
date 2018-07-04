@@ -18,7 +18,7 @@
       </mat-sidenav>
       <mat-sidenav-content>
         <section class="app-navigation-wrapper">
-          <top-nav [Tabs]="openedDocumentList | async"></top-nav>
+          <top-nav [Tabs]="openedDocumentList | async" (OnTabChange)="OnTopNavSelectionChange($event);"></top-nav>
         </section>
         <section class="content-area">
           <router-outlet></router-outlet>

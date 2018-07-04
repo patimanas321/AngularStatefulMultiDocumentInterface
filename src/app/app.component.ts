@@ -6,6 +6,7 @@ import { AppState } from './models/app-state';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MdiDocument, MdiType } from './models/mdi';
+import * as mdiAction from './store/actions/mdi.action';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +53,26 @@ export class AppComponent implements OnInit {
     this.router.navigate([tab.path]);
   }
 
-  public OnTapNavSelectionChange(tab: Tab) {
+  public OnTopNavSelectionChange(tab: Tab) {
+    var subs = this.store.select(x => x.mdiDocuments)
+      .pipe(map((data) => {
+        return data.filter((x) => x.id == tab.id)[0];
+      })).subscribe((doc) => {
+        if (doc.mdiType == MdiType.Account)
+          this.router.navigate(['/account', tab.id]);
+        else if (doc.mdiType == MdiType.Application)
+          this.router.navigate(['/application', tab.id]);
+      }, (err) => {
+      }, () => {
+        subs.unsubscribe();
+        this.store.dispatch(new mdiAction.UpdateSlectedMdiAction(tab.id));
+      });
 
+    //Workout as above subscription complete callback doesnot execute with fake http service
+    //Not requied in case of actual http call.
+    setTimeout(() => {
+      subs.unsubscribe();
+      this.store.dispatch(new mdiAction.UpdateSlectedMdiAction(tab.id));
+    }, 100);
   }
 }

@@ -13,7 +13,7 @@ export class TopNavComponent {
   public Tabs: Tab[] = [];
 
   @Output() 
-  OnTabChange: EventEmitter<Tab> = new EventEmitter();
+  OnTabChange: EventEmitter<Tab> = new EventEmitter<Tab>();
 
   public changeTab(tab: Tab) {
     this.OnTabChange.emit(tab);
