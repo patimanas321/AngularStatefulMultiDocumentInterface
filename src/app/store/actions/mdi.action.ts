@@ -21,7 +21,7 @@ export class DeleteMdiAction{
 
 export class UpdateMdiAction{
     readonly type = UPDATE_MDI_DATA;
-    constructor(public payload: MdiDocument){
+    constructor(public payload: any){
         
     }
 }

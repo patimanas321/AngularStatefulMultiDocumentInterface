@@ -15,8 +15,8 @@ import { MdiDocument, MdiType } from './models/mdi';
 export class AppComponent implements OnInit {
 
   title = 'app';
-  openedDocumentList: Observable<any>;
-  selectedOpenedDocument: Observable<string>;
+  openedDocumentList: Observable<Tab[]>;
+  selectedDocument: MdiDocument = null;
 
   constructor(
     private router: Router,
@@ -34,32 +34,6 @@ export class AppComponent implements OnInit {
         });
         return tabList;
       }));
-
-    this.store.select(x => x.mdiDocuments)
-      .pipe(map((data) => {
-        let filteredTabs = data.filter(x => x.isActive = true);
-        if (filteredTabs && filteredTabs.length > 0)
-          return filteredTabs[0];
-        else
-          return null;
-      })).subscribe(data => {
-        if (data) {
-          switch (data.mdiType) {
-            case MdiType.Account: {
-              this.router.navigate(['/account', data.id]);
-              break;
-            }
-            case MdiType.Application: {
-              this.router.navigate(['/application', data.id]);
-              break;
-            }
-            default: {
-              //statements; 
-              break;
-            }
-          }
-        }
-      });
   }
 
   public sideNavList = [

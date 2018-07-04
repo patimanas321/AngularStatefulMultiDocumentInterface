@@ -7,6 +7,7 @@ import { AppState } from '../models/app-state';
 import * as accountListAction from '../store/actions/account-list.action';
 import * as mdiAction from '../store/actions/mdi.action';
 import { MdiDocument, MdiType } from '../models/mdi';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'account-list',
@@ -17,11 +18,13 @@ export class AccountListComponent implements OnInit, OnDestroy {
   
   constructor(
     private accountService: AccountsService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ){
   }
 
   data: AccountListViewModel = new AccountListViewModel();
+  searchedText: string;
 
   ngOnInit(): void {
     this.store.select( x => x.accountList).subscribe((data: AccountListViewModel)=>{
@@ -47,6 +50,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
   openAccount(account: BankAccount){
     let newDoc = new MdiDocument(account.number, account.number, '', MdiType.Account, true, null);
     this.store.dispatch(new mdiAction.AddMdiAction(newDoc));
+    this.router.navigate(['/account', account.number]);
   }  
 
   addAccount(){

@@ -12,8 +12,14 @@ export function MdiReducer(state = INITIAL_STATE, action: mdiActions.Action) {
             //Add to document list only if same record is not opened.
             if (!checkIfDocumentAlreadyOpened(action.payload, docList))
                 docList.push(action.payload);
-            markSelectedTab(action.payload.id, docList);
-            console.log(docList);
+            markSelectedTab(action.payload.id, docList);            
+            return docList;
+        }
+
+        case mdiActions.UPDATE_MDI_DATA: {
+            let docList = [];
+            docList = docList.concat(state);
+            updateMdiData(action.payload, docList);
             return docList;
         }
 
@@ -21,7 +27,6 @@ export function MdiReducer(state = INITIAL_STATE, action: mdiActions.Action) {
             let docList = [];
             docList = docList.concat(state);
             markSelectedTab(action.payload, docList);
-            console.log(docList);
             return docList;
         }
 
@@ -46,4 +51,12 @@ function markSelectedTab(selectedTabId: string, documentList: MdiDocument[]) {
         else
             item.isActive = false;
     });
+
+    console.log(documentList);
+}
+
+function updateMdiData(data: any, documentList: MdiDocument[]){
+    var mdi = documentList.filter(x => x.id == data.actualData.number)[0];
+    mdi.data = data;
+    console.log(mdi);
 }

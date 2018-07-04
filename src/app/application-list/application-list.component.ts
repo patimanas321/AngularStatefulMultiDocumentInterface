@@ -8,6 +8,7 @@ import * as applicationListAction from '../store/actions/application-list.action
 import * as mdiAction from '../store/actions/mdi.action';
 import { MdiDocument, MdiType } from '../models/mdi';
 import { Application } from '../models/application';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'application-list',
@@ -18,11 +19,13 @@ export class ApplicationListComponent implements OnInit {
 
   constructor(
     private applicationsService: ApplicationsService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {
   }
 
   data: ApplicationListViewModel = new ApplicationListViewModel();
+  searchedText: string;
 
   ngOnInit(): void {
     this.store.select(x => x.applicationList).subscribe((data: ApplicationListViewModel) => {
@@ -48,6 +51,7 @@ export class ApplicationListComponent implements OnInit {
   openApplictaion(application: Application) {
     let newDoc = new MdiDocument(application.number, application.number, '', MdiType.Application, true, null);
     this.store.dispatch(new mdiAction.AddMdiAction(newDoc));
+    this.router.navigate(['/application', application.number]);
   }
 
   addAccount() {
