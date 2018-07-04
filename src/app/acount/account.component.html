@@ -1,0 +1,177 @@
+<mat-toolbar class="mat-elevation-z2 app-page-header">
+    <mat-icon>recent_actors</mat-icon>
+    <span style="margin-left: 10px;">Account {{accountId}}</span>
+    <span style="flex: 1 1 auto;"></span>
+    <button type="button" mat-icon-button>
+        <mat-icon>replay</mat-icon>
+    </button>
+</mat-toolbar>
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData" [(expanded)]="data.infoSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Account Information
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="background-color: #f9f9f9; padding: 20px;">
+            <div>
+                <label>Account Number: </label>{{data.actualData.number}}
+            </div>
+            <div>
+                <label>Account Holder Name: </label>{{data.actualData.accountHolderName}}
+            </div>
+            <div>
+                <label>Balance: </label>{{data.actualData.balance}}
+            </div>
+            <div>
+                <label>Status: </label>{{data.actualData.status}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.accountHolderAddress" [(expanded)]="data.addressSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Account Holder Address
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="background-color: #f9f9f9; padding: 20px;">
+            <div>
+                <label>Line 1: </label>{{data.actualData.accountHolderAddress.line1}}
+            </div>
+            <div>
+                <label>Line 2: </label>{{data.actualData.accountHolderAddress.line2}}
+            </div>
+            <div>
+                <label>District: </label>{{data.actualData.accountHolderAddress.dist}}
+            </div>
+            <div>
+                <label>Satate: </label>{{data.actualData.accountHolderAddress.state}}
+            </div>
+            <div>
+                <label>Zip Code: </label>{{data.actualData.accountHolderAddress.pin}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.credits" [(expanded)]="data.creditsSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Credits
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+            <ngx-datatable class="datagrid" [rows]="data.actualData.credits" [headerHeight]="'auto'" [footerHeight]="'auto'" [rowHeight]="'auto'">
+
+                <ngx-datatable-column headerClass="col-id" cellClass="col-id" name="ID">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Transaction Account" prop="account">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-2" cellClass="flex-2" name="Account Holder Name">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Amount">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <span class="label">{{value | currency}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Date">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        {{value | date}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.debits" [(expanded)]="data.debitsSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Debits
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+            <ngx-datatable class="datagrid" [rows]="data.actualData.debits" [headerHeight]="'auto'" [footerHeight]="'auto'" [rowHeight]="'auto'">
+
+                <ngx-datatable-column headerClass="col-id" cellClass="col-id" name="ID">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Transaction Account" prop="account">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-2" cellClass="flex-2" name="Account Holder Name">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Amount">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <span class="label">{{value | currency}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Date">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        {{value | date}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.notifications" [(expanded)]="data.notificationSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Notifications
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+            <ngx-datatable class="datagrid" [rows]="data.actualData.notifications" [headerHeight]="0" [footerHeight]="0" [rowHeight]="'auto'">
+
+                <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" prop="date">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value | date}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column headerClass="flex-5" cellClass="flex-5" prop="message">
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </mat-expansion-panel>
+</div>
