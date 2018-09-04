@@ -17,7 +17,7 @@ import * as mdiAction from '../store/actions/mdi.action';
 export class ApplicationComponent implements OnInit, OnDestroy {
 
   routeParamSubscription: Subscription;
-  accountId: number;
+  applicationId: number;
   data: ApplicationViewModel = new ApplicationViewModel();
 
   constructor(
@@ -29,17 +29,17 @@ export class ApplicationComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.routeParamSubscription = this.route.params.subscribe(params => {
-      this.accountId = +params['id'];
+      this.applicationId = +params['id'];
 
       //Document selection changed - update data in store, before loading new data
-      if(this.data.actualData && this.accountId != this.data.actualData.id){
+      if(this.data.actualData && this.applicationId != this.data.actualData.id){
         this.updateDataInStore();
       }
       
       //Fetch new Tab Data from Store
       var subs = this.store.select(x => x.mdiDocuments).pipe(
         map((data) => {
-          return data.filter(x => x.id == this.accountId.toString())[0];
+          return data.filter(x => x.id == this.applicationId.toString())[0];
         })
       ).subscribe((document: MdiDocument)=>{
         //If data is null in store, first load, get data from service
@@ -56,7 +56,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
   }
 
   getApplicationDataFromService(){
-    this.applicationService.getApplicationByNumber(this.accountId).subscribe((data) => {
+    this.applicationService.getApplicationByNumber(this.applicationId).subscribe((data) => {
       this.data.actualData = data; 
     });
   }
