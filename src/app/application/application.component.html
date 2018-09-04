@@ -14,15 +14,18 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div style="background-color: #f9f9f9; padding: 20px;">
-            <div>
-                <label>Application Number: </label>{{data.actualData.number}}
-            </div>
-            <div>
-                <label>Application Type: </label>{{data.actualData.applicationType}}
-            </div>
-            <div>
-                <label>Applictaion Status: </label>{{data.actualData.status}}
+        <div class="edit-panel">
+            <div style="background-color: #f9f9f9; padding: 20px;">
+                <mat-icon class="edit-data-icon">edit</mat-icon>
+                <div>
+                    <label>Application Number: </label>{{data.actualData.number}}
+                </div>
+                <div>
+                    <label>Application Type: </label>{{data.actualData.applicationType}}
+                </div>
+                <div>
+                    <label>Applictaion Status: </label>{{data.actualData.status}}
+                </div>
             </div>
         </div>
     </mat-expansion-panel>
@@ -35,25 +38,27 @@
                 Applicant Personal Details
             </mat-panel-title>
         </mat-expansion-panel-header>
-
-        <div style="background-color: #f9f9f9; padding: 20px;">
-            <div>
-                <label>Full Name: </label>{{data.actualData.personalDetails.fullName}}
-            </div>
-            <div>
-                <label>Date Of Birth: </label>{{data.actualData.personalDetails.dateOfBirth | date}}
-            </div>
-            <div>
-                <label>PAN No: </label>{{data.actualData.personalDetails.panNo}}
-            </div>
-            <div>
-                <label>Customer Id: </label>{{data.actualData.personalDetails.customerId}}
-            </div>
-            <div>
-                <label>Address: </label>{{data.actualData.personalDetails.address.line1}}<br> {{data.actualData.personalDetails.address.line2}}
-                <br> {{data.actualData.personalDetails.address.dist}}
-                <br> {{data.actualData.personalDetails.address.state}}
-                <br> {{data.actualData.personalDetails.address.pin}}
+        <div class="edit-panel">
+            <div style="background-color: #f9f9f9; padding: 20px;">
+                <mat-icon class="edit-data-icon">edit</mat-icon>
+                <div>
+                    <label>Full Name: </label>{{data.actualData.personalDetails.fullName}}
+                </div>
+                <div>
+                    <label>Date Of Birth: </label>{{data.actualData.personalDetails.dateOfBirth | date}}
+                </div>
+                <div>
+                    <label>PAN No: </label>{{data.actualData.personalDetails.panNo}}
+                </div>
+                <div>
+                    <label>Customer Id: </label>{{data.actualData.personalDetails.customerId}}
+                </div>
+                <div>
+                    <label>Address: </label>{{data.actualData.personalDetails.address.line1}}<br> {{data.actualData.personalDetails.address.line2}}
+                    <br> {{data.actualData.personalDetails.address.dist}}
+                    <br> {{data.actualData.personalDetails.address.state}}
+                    <br> {{data.actualData.personalDetails.address.pin}}
+                </div>
             </div>
         </div>
     </mat-expansion-panel>
@@ -66,19 +71,21 @@
                 Applicant Income Details
             </mat-panel-title>
         </mat-expansion-panel-header>
-
-        <div style="background-color: #f9f9f9; padding: 20px;">
-            <div>
-                <label>Occupation: </label>{{data.actualData.incomeDetails.occupation}}
-            </div>
-            <div>
-                <label>Annual Income: </label>{{data.actualData.incomeDetails.annualIncome | date}}
-            </div>
-            <div>
-                <label>Current Employer Name: </label>{{data.actualData.incomeDetails.currentEmployerName}}
-            </div>
-            <div>
-                <label>Total Experience: </label>{{data.actualData.incomeDetails.totalExperienceInYears}}
+        <div class="edit-panel">
+            <div style="background-color: #f9f9f9; padding: 20px;">
+                <mat-icon class="edit-data-icon">edit</mat-icon>
+                <div>
+                    <label>Occupation: </label>{{data.actualData.incomeDetails.occupation}}
+                </div>
+                <div>
+                    <label>Annual Income: </label>{{data.actualData.incomeDetails.annualIncome | date}}
+                </div>
+                <div>
+                    <label>Current Employer Name: </label>{{data.actualData.incomeDetails.currentEmployerName}}
+                </div>
+                <div>
+                    <label>Total Experience: </label>{{data.actualData.incomeDetails.totalExperienceInYears}}
+                </div>
             </div>
         </div>
     </mat-expansion-panel>
