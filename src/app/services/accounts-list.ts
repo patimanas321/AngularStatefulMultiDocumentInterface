@@ -1,4 +1,5 @@
-import { BankAccount, Transaction, Address, Notification } from "../models/account";
+import { BankAccount, Transaction, Notification } from "../models/account";
+import { Address } from "../models/address";
 
 export const dummyAccounts = [
     new BankAccount(

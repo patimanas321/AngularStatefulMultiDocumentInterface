@@ -21,28 +21,10 @@ export class ApplicationsService {
         return this.applicationsList$;
     }
 
-    public addAccount(newAccount: Application): Observable<Application> {
-        this.applicationsList.push(newAccount);
-        this._applicationsList$.next(this.applicationsList);
-        this.snackBar.open('Account Added Successfully', '', {
-            duration: 2000,
-        });
-
-        return Observable.create(function (observer) {
-            observer.next(newAccount);
-        });
-    }
-
-    public deleteAccount(id: number): Observable<Application> {
-        let deletedAccount = this.applicationsList.filter(acct => acct.id == id)[0];
-
-        this.applicationsList = this.applicationsList.filter(acct => acct.id != id);
-        this._applicationsList$.next(this.applicationsList);
-        this.snackBar.open('Account Deleted Successfully', '', {
-            duration: 2000,
-        });
-        return Observable.create(function (observer) {
-            observer.next(deletedAccount);
-        });
+    public getApplicationByNumber(id: number): Observable<Application> {
+        console.log('AccountService - getAccountByNumber() called');
+        var application = this.applicationsList.filter(x => x.number == id.toString())[0]
+        let _application$: BehaviorSubject<Application> = new BehaviorSubject(application);
+        return _application$.asObservable();
     }
 }

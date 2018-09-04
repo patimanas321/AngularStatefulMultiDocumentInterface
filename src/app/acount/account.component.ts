@@ -43,7 +43,7 @@ export class AccountComponent implements OnInit, OnDestroy {
         })
       ).subscribe((document: MdiDocument)=>{
         //If data is null in store, first load, get data from service
-        if(document.data)
+        if(document && document.data)
           this.data = document.data;
         else
           this.getAccountDataFromService();

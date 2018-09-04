@@ -1,1 +1,85 @@
-Application {{applicationId}}
+<mat-toolbar class="mat-elevation-z2 app-page-header">
+    <mat-icon>how_to_vote</mat-icon>
+    <span style="margin-left: 10px;">Application {{applicationId}}</span>
+    <span style="flex: 1 1 auto;"></span>
+    <button type="button" mat-icon-button>
+        <mat-icon>replay</mat-icon>
+    </button>
+</mat-toolbar>
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData" [(expanded)]="data.infoSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Application Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="background-color: #f9f9f9; padding: 20px;">
+            <div>
+                <label>Application Number: </label>{{data.actualData.number}}
+            </div>
+            <div>
+                <label>Application Type: </label>{{data.actualData.applicationType}}
+            </div>
+            <div>
+                <label>Applictaion Status: </label>{{data.actualData.status}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.personalDetails" [(expanded)]="data.personalDetailsSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Applicant Personal Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="background-color: #f9f9f9; padding: 20px;">
+            <div>
+                <label>Full Name: </label>{{data.actualData.personalDetails.fullName}}
+            </div>
+            <div>
+                <label>Date Of Birth: </label>{{data.actualData.personalDetails.dateOfBirth | date}}
+            </div>
+            <div>
+                <label>PAN No: </label>{{data.actualData.personalDetails.panNo}}
+            </div>
+            <div>
+                <label>Customer Id: </label>{{data.actualData.personalDetails.customerId}}
+            </div>
+            <div>
+                <label>Address: </label>{{data.actualData.personalDetails.address.line1}}<br> {{data.actualData.personalDetails.address.line2}}
+                <br> {{data.actualData.personalDetails.address.dist}}
+                <br> {{data.actualData.personalDetails.address.state}}
+                <br> {{data.actualData.personalDetails.address.pin}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<div style="margin: 20px;">
+    <mat-expansion-panel *ngIf="data.actualData && data.actualData.incomeDetails" [(expanded)]="data.incomeSectionVisible">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Applicant Income Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="background-color: #f9f9f9; padding: 20px;">
+            <div>
+                <label>Occupation: </label>{{data.actualData.incomeDetails.occupation}}
+            </div>
+            <div>
+                <label>Annual Income: </label>{{data.actualData.incomeDetails.annualIncome | date}}
+            </div>
+            <div>
+                <label>Current Employer Name: </label>{{data.actualData.incomeDetails.currentEmployerName}}
+            </div>
+            <div>
+                <label>Total Experience: </label>{{data.actualData.incomeDetails.totalExperienceInYears}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>

@@ -37,9 +37,9 @@
             </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="AccountNumber" prop="number">
+        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="ApplicationNumber" prop="number">
             <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <span class="label-mobile">Account Number</span>
+                <span class="label-mobile">Application Number</span>
                 <span class="value-mobile">
                     <a href="javascript:void(0);" (click)="openApplictaion(row)">{{value}}</a>
                 </span>
@@ -49,14 +49,7 @@
         <ngx-datatable-column headerClass="flex-2" cellClass="flex-2" name="Applicant Name">
             <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                 <span class="label-mobile">Applicant Name</span>
-                <span class="value-mobile">{{value}}</span>
-            </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column headerClass="flex-1" cellClass="flex-1" name="Balance">
-            <ng-template let-value="value" ngx-datatable-cell-template>
-                <span class="label-mobile">Balance</span>
-                <span class="label">{{value | currency}}</span>
+                <span class="value-mobile">{{row.personalDetails.fullName}}</span>
             </ng-template>
         </ngx-datatable-column>
 

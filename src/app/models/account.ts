@@ -1,3 +1,5 @@
+import { Address } from "./address";
+
 export class BankAccount{
     constructor(
         public id: number,
@@ -21,18 +23,6 @@ export class BankAccount{
         public accountHolderName: string,
         public date: Date,
         public amount: number
-    ){
-
-    }
-  }
-
-  export class Address{
-    constructor(
-        public line1: string,
-        public line2: string,
-        public dist: string,
-        public state: string,
-        public pin: string,
     ){
 
     }
