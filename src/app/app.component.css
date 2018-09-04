@@ -11,6 +11,11 @@ main, .content-area{
     flex-direction: column;
 }
 
+.content-area{
+    flex: 1;
+    overflow-y: auto;
+}
+
 header{
     z-index: 1000;
 }
@@ -34,4 +39,9 @@ footer{
 
 .side-nav-icon{
     margin-right: 10px;
+}
+
+.mat-sidenav-content{
+    display: flex;
+    flex-direction: column;
 }
