@@ -1,27 +1,27 @@
-# Mdi
+# Stateful Multi Document Interface
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+Angular6 application demonstrating effective use REDUX pattern to implement multi document interface which allows users to work simultaneously in multiple opened views without losing state. Open Multiple application tabs inside same browser tab with maintained state with nearly no limit in opened tabs. 
 
-## Development server
+## Application Details
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is a Dummy application trying to replicate a Bank, where user can view a list of Accounts and Applications submitted to the Bank. Each Account or application can be opened to a Application tab, for multi-tasking.
 
-## Code scaffolding
+## What is MDI (Multi Document Interface)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Each Account and Application here is considered as a Document, where user may want to perform some operation like view/edit. But user may be interested to work on multiple such documents simultaneously. MDI suggest to open each Document as a new subtab in the application. These subtabs will be stateful, so that user can easily navigate between them and each operation/selection/form fill will be maintained for each document.
 
-## Build
+## Suggested Approach
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1) Use REDUX (NGRX Store) to maintain state of each document.
+2) On each document open, add a new application tab.
+3) Implement different angular views for each Document types. (e.g. Accounts, Applications)
+4) On document load, check in store if already have a state of Data. If Yes, Load it to the view. Else call        actual REST service for data.
+5) On new view change, first update store with latest state of data, and then route.
+6) Done! We have stateful MDIs implemented.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Benefits with this Approach
+1) Each MDI is a replication of tab. Internally there are different views implemented and at a time only one view (route) is loaded. This prevents from generating a lot of HTML.
+2) As only state of Data is maintained, Application can have a huge no of simultaneous tabs opened.
+3) Change in Tab is internally is an angular route, hence faster tab changes and no memory issues on having large no of opened tabs.
+4) States of Tabs are maintained by NGRX store, Hence less coding and ease of implementation.
+5) Immutable data structures.
